@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MVC、MVP与MVVM | machineLearnings</title>
+  <meta name="author" content="geakw">
+  
+  <meta name="description" content="do things we like">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="MVC、MVP与MVVM"/>
+  <meta property="og:site_name" content="machineLearnings"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="machineLearnings" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">machineLearnings</a>
+  </h1>
+  <p class="site-description"></p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="http://github.com/geakw">About</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>MVC、MVP与MVVM</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/04/08/MVC,MVP与MVVM/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-04-08T10:42:39.000Z">
+          2016-04-08
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>在客户端的开发中，有经验的开发人员经常使用一些MV*架构模式，来对应用进行分层处理，这样做的好处是分工明确，每个模块只做自己应该做的事情。由于自己在平时的开发中使用MVP模式比较多一些，最近看到自从Android支持Data binding之后，MVVM也很受追捧，在github上面可以看到很多Mvp转成MVVM的demo，比如:</p>
+<p><a href="https://github.com/zhengxiaopeng/MVVM_Android-CleanArchitecture" target="_blank" rel="noopener">MVVM_Android-CleanArchitecture</a></p>
+<p><a href="https://github.com/Nilzor/mvp-to-mvvm-transition" target="_blank" rel="noopener">mvp-to-mvvm-transition</a></p>
+<p>刚好有时间，就研究了一下MVC,MVP,MVVM的区别，现在做一下总结</p>
+<a id="more"></a>
+<p>1、MVC</p>
+<p><img src="http://i.imgur.com/ciKCnrd.png" alt=""></p>
+<p>MVC是把应用分成了Model，View，Controller三层。当用户与view进行交互时，会由Controller进行逻辑的处理，并更改Model。MVC与MVP的重要区别是Controller并不会直接操作View，View和Model的同步是通过观察者模式进行的，当Model改变后会发出相应的事件，通知View进行重新获取Model更新。</p>
+<p>2、MVP</p>
+<p><img src="http://i.imgur.com/dcCuZbn.png" alt=""></p>
+<p>MVP把MVC中的Controller换成了Presenter，当用户与view交互时，由Presenter进行逻辑的处理，并对Model进行更改，与MVC不同的时，MVP由Presenter负责View的更新，View并不清楚Model的存在，Presenter是连接View和Model的桥梁。</p>
+<p>3、MVVM</p>
+<p><img src="http://i.imgur.com/qPDSr9H.png" alt=""></p>
+<p>MVVM代表的是Model-View-ViewModel，之所以叫做ViewModel是因为它是The Model of View的意思，是View的一个模型，ViewModel是用来连接View和Model的桥梁，ViewModel中有一个Data binding engine，负责View和Model之间的同步，我们只需要根据语法，指令式地声明View上的显示的内容是和Model的哪一块数据绑定的，当用户操作View时，engine会自动把数据更新到Model中，反之，当Model改变时，engine也会自动把数据更新到View上，这称之为双向数据绑定（Two-way data-binding）</p>
+<p>参考文档：</p>
+<p><a href="http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/" target="_blank" rel="noopener">android-databinding-goodbye-presenter-hello-viewmodel</a></p>
+<p><a href="https://labs.ribot.co.uk/approaching-android-with-mvvm-8ceec02d5442#.6ebkxxpsu" target="_blank" rel="noopener">Approaching Android with MVVM</a></p>
+<p><a href="https://github.com/livoras/blog/issues/11" target="_blank" rel="noopener">界面之下：还原真实的MV*模式</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          <span class="post-categories">
+            <i class="icon-categories"></i>
+            
+  
+
+  <a href="/categories/架构/">架构</a>
+
+
+          </span>
+          <span class="post-tags">
+            <i class="icon-tags"></i>
+            
+          </span>
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+<div id="comment">
+
+
+<!-- 多说评论框 start -->
+ <div class="ds-thread" data-thread-key="/2016/04/08/MVC,MVP与MVVM/" data-title="MVC、MVP与MVVM" data-url="http://geakw.github.io/2016/04/08/MVC,MVP与MVVM/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"geakw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><div class="site-info">
+  <p class="meta">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 geakw
+    
+  </p>
+</div></footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-72006779-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>
